@@ -1,0 +1,31 @@
+Starting audit...
+com.puppycrawl.tools.checkstyle.api.CheckstyleException: Exception was thrown while processing ./src/database/CreateDataBase.java
+	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:311)
+	at com.puppycrawl.tools.checkstyle.Checker.process(Checker.java:221)
+	at com.puppycrawl.tools.checkstyle.Main.runCheckstyle(Main.java:408)
+	at com.puppycrawl.tools.checkstyle.Main.runCli(Main.java:331)
+	at com.puppycrawl.tools.checkstyle.Main.execute(Main.java:190)
+	at com.puppycrawl.tools.checkstyle.Main.main(Main.java:125)
+Caused by: com.puppycrawl.tools.checkstyle.api.CheckstyleException: IllegalStateException occurred while parsing file /home/ionica/workspace/ACS2-Sem1/POO/HomeworkVideoDataBase/./src/database/CreateDataBase.java.
+	at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:120)
+	at com.puppycrawl.tools.checkstyle.TreeWalker.processFiltered(TreeWalker.java:149)
+	at com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck.process(AbstractFileSetCheck.java:87)
+	at com.puppycrawl.tools.checkstyle.Checker.processFile(Checker.java:337)
+	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:298)
+	... 5 more
+Caused by: java.lang.IllegalStateException: /home/ionica/workspace/ACS2-Sem1/POO/HomeworkVideoDataBase/./src/database/CreateDataBase.java:139:9: expecting RCURLY, found 'enum'
+	at com.puppycrawl.tools.checkstyle.JavaParser$1.reportError(JavaParser.java:108)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinition(GeneratedJavaRecognizer.java:424)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.compilationUnit(GeneratedJavaRecognizer.java:212)
+	at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:114)
+	... 9 more
+Caused by: /home/ionica/workspace/ACS2-Sem1/POO/HomeworkVideoDataBase/./src/database/CreateDataBase.java:139:9: expecting RCURLY, found 'enum'
+	at antlr.Parser.match(Parser.java:211)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.compoundStatement(GeneratedJavaRecognizer.java:4555)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.field(GeneratedJavaRecognizer.java:3158)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.classBlock(GeneratedJavaRecognizer.java:3415)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.classDefinition(GeneratedJavaRecognizer.java:646)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinitionInternal(GeneratedJavaRecognizer.java:561)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinition(GeneratedJavaRecognizer.java:402)
+	... 11 more
+Checkstyle ends with 1 errors.
