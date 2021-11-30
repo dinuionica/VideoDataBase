@@ -7,12 +7,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class of a movie
+ */
 public final class Movie extends Show {
     /**
      * Duration in minutes of a season
      */
     private final int duration;
-    private final Map<User, Double> ratingByUser;
+    /**
+     * The rating given by a user
+     */
+    private final HashMap<User, Double> ratingByUser;
 
     /* constructor */
     public Movie(final String title, final int year, final ArrayList<String> cast,
@@ -22,13 +28,14 @@ public final class Movie extends Show {
         this.ratingByUser = new HashMap<>();
     }
 
+    /* the constructor that receives as argument a user MovieInput type */
     public Movie(final MovieInputData movie) {
         super(movie.getTitle(), movie.getYear(), movie.getCast(), movie.getGenres());
         this.duration = movie.getDuration();
         this.ratingByUser = new HashMap<>();
     }
 
-    /* getter */
+    /* getters */
     public int getDuration() {
         return duration;
     }
@@ -38,14 +45,14 @@ public final class Movie extends Show {
     }
 
     /**
-     * function
-     * @return
+     * The method that calculates average rating of a movie
+     * @return the rating
      */
-    public double getAverageRatings() {
-
+    public double getAverageRating() {
+        /* calculate the sum of the ratings given by the users */
         double sumRating = 0;
-        for (double x : ratingByUser.values()) {
-            sumRating += x;
+        for (Map.Entry<User, Double> entry : this.ratingByUser.entrySet())  {
+            sumRating += entry.getValue();
         }
         if (ratingByUser.size() == 0) {
             return 0;

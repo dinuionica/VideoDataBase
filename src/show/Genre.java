@@ -1,32 +1,34 @@
 package show;
 
 import database.ShowsDataBase;
-import database.UsersDataBase;
-import user.User;
-
-import java.security.KeyPair;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
+/**
+ * Class of a Genre
+ */
 public class Genre {
+
+    /**
+     * Gender type with popularity factor
+     */
     HashMap<String, Integer> genres = new HashMap<>();
 
-    int factorPopularity;
+    /**
+     * Popularity factor
+     */
+    int popularityFactor;
 
+    /**
+     * Name of a genre
+     */
     String nameGenre;
 
+    /* constructor */
     public Genre() {
         this.genres = new HashMap<>();
     }
 
-    public void updateInformation(String name) {
-        this.genres.put(name, 0);
-        this.nameGenre = name;
-        this.factorPopularity = 0;
-    }
-
+    /* getters and setters */
     public String getNameGenre() {
         return nameGenre;
     }
@@ -39,20 +41,36 @@ public class Genre {
         this.genres = genres;
     }
 
-    public int getFactorPopularity() {
-        return factorPopularity;
+    public int getPopularityFactor() {
+        return popularityFactor;
     }
 
-    public void calculatePopularity(ShowsDataBase showsData) {
+    /**
+     * The method tha update the information about a genre
+     * @param name
+     */
+    public void updateInformation(String name) {
+        this.genres.put(name, 0);
+        this.nameGenre = name;
+        this.popularityFactor = 0;
+    }
+
+    /**
+     * The method that calculates the popularity factor of a genre
+     * @param showsData
+     */
+    public void calculatePopularityFactor(ShowsDataBase showsData) {
         for (Show show : showsData.getShowsList()) {
+            int numberViews = show.getNumberViews();
             for (String genre : show.getGenres()) {
-                if (this.genres.containsKey(genre)) {
-                    this.genres.put(genre, this.genres.get(genre) + show.getNumberViews());
-                    this.factorPopularity = this.genres.get(genre);
-                } else {
+                /* if a video is in the genre list, it updates the number of views */
+                if (!this.genres.containsKey(genre)) {
                     this.genres.put(genre, show.getNumberViews());
-                    this.factorPopularity = this.genres.get(genre);
+                } else {
+                    this.genres.put(genre, this.genres.get(genre) + numberViews);
                 }
+                /* popularity factor update */
+                this.popularityFactor = this.genres.get(genre);
             }
         }
     }

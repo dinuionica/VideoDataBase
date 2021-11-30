@@ -1,6 +1,8 @@
 package main;
 
 import action.Command;
+import action.RecommendationParsing;
+import action.Query;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
@@ -98,6 +100,18 @@ public final class Main {
                 case "command" -> {
                     resultMessage = Command.parseCommand(usersData, moviesData,
                                     serialsData, action);
+                    object = fileWriter.writeFile(action.getActionId(), null, resultMessage);
+                    arrayResult.add(object);
+                }
+                case "query" -> {
+                    resultMessage = Query.parseQuery(usersData, showsData,
+                                    moviesData, serialsData, actorsData, action);
+                    object = fileWriter.writeFile(action.getActionId(), null, resultMessage);
+                    arrayResult.add(object);
+                }
+                case "recommendation" -> {
+                    resultMessage = RecommendationParsing.parse(usersData, showsData,
+                                    moviesData, serialsData, genresData, action);
                     object = fileWriter.writeFile(action.getActionId(), null, resultMessage);
                     arrayResult.add(object);
                 }
