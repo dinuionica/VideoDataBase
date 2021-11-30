@@ -4,6 +4,9 @@ import entertainment.Season;
 import fileio.SerialInputData;
 import java.util.ArrayList;
 
+/**
+ * Class of a serial
+ */
 public final class Serial extends Show {
     /**
      * Number of seasons
@@ -24,6 +27,7 @@ public final class Serial extends Show {
 
     }
 
+    /* the constructor that receives as argument a serial SerialInputData type */
     public Serial(final SerialInputData serial) {
         super(serial.getTitle(), serial.getYear(), serial.getCast(), serial.getGenres());
         this.numberOfSeasons = serial.getNumberSeason();
@@ -41,15 +45,30 @@ public final class Serial extends Show {
     }
 
     /**
-     * function
-     * @return
+     * The method that calculates the average rating of a serial
+     * @return the rating
      */
-    public double getAverageRatings() {
-        double sumRatings = 0;
+    public double getAverageRating() {
+        /* add to the current sum the rating of each season */
+        double sumRating = 0;
         for (Season season : this.seasons) {
-            sumRatings += season.getRatingSeason();
+            sumRating += season.getRatingSeason();
         }
-        return sumRatings / numberOfSeasons;
+        return sumRating / numberOfSeasons;
+    }
+
+    /**
+     * The method that calculates the duration of a serial
+     * @return the dureation
+     */
+    @Override
+    public int getDuration() {
+        /* add to the current sum the duration of each season */
+        int sumDuration = 0;
+        for (Season season : this.getSeasons()) {
+            sumDuration += season.getDuration();
+        }
+        return sumDuration;
     }
 
     @Override
@@ -61,14 +80,5 @@ public final class Serial extends Show {
                 + super.getGenres() + " }\n "
                 + " numberSeason= " + numberOfSeasons
                 + ", seasons=" + seasons + "\n\n" + '}';
-    }
-
-    @Override
-    public int getDuration() {
-        int sumDuration = 0;
-        for (Season season : this.getSeasons()) {
-            sumDuration += season.getDuration();
-        }
-        return sumDuration;
     }
 }
