@@ -31,7 +31,10 @@ public final class Recommendation {
                                                 final ActionInputData action) {
         User desireUser = usersData.findUserDataBase(action.getUsername());
         assert desireUser != null;
-        return desireUser.getSubscriptionType().equals("BASIC");
+        if (desireUser.getSubscriptionType().equals("BASIC")) {
+            return false;
+        }
+        return true;
     }
     /**
      * The method that applies a standard recommendation
@@ -49,7 +52,6 @@ public final class Recommendation {
         String resultMessage;
 
         for (Show show: showsList) {
-            assert desiredUser != null;
             /* if the user did not watch the video, return it */
             if (!desiredUser.getHistory().containsKey(show.getTitle())) {
                 resultMessage = "StandardRecommendation result: " + show.getTitle();
@@ -103,7 +105,7 @@ public final class Recommendation {
                                          final ShowsDataBase showsData,
                                          final ActionInputData action) {
         /* check subscription type */
-        if (checkSubscriptionType(usersData, action)) {
+        if (!checkSubscriptionType(usersData, action)) {
             return null;
         }
 
@@ -149,7 +151,7 @@ public final class Recommendation {
                                                 final ShowsDataBase showsData,
                                                 final ActionInputData action) {
         /* check subscription type */
-        if (checkSubscriptionType(usersData, action)) {
+        if (!checkSubscriptionType(usersData, action)) {
             return null;
         }
         ArrayList<Show> showsList = showsData.getShowsList();
@@ -166,11 +168,12 @@ public final class Recommendation {
                 Comparator.comparing(Show::getNumberFavoritesAppearances)
                           .thenComparing(showsList::indexOf));
 
+        Collections.reverse(showsList);
         for (Show show: showsList) {
             if (show.getNumberFavoritesAppearances() != 0) {
                 /* if the user did not watch the video, return it */
                 assert desiredUser != null;
-                if (!desiredUser.getHistory().containsKey(show.getTitle())){
+                if (!desiredUser.getHistory().containsKey(show.getTitle())) {
                     String resultMessage = "FavoriteRecommendation result: " + show.getTitle();
                     return resultMessage;
                 }
@@ -192,7 +195,7 @@ public final class Recommendation {
                                  final ActionInputData action) {
 
         /* check subscription type */
-        if (checkSubscriptionType(usersData, action)) {
+        if (!checkSubscriptionType(usersData, action)) {
             return null;
         }
 
@@ -208,8 +211,7 @@ public final class Recommendation {
 
         /* sorting the genres list by factor of popularity and by name */
         Collections.sort(genresLit,
-                Comparator.comparing(Genre::getPopularityFactor)
-                          .thenComparing(Genre::getNameGenre));
+                Comparator.comparing(Genre::getPopularityFactor));
 
         /* sorting the shows list by index of the database  */
         Collections.sort(showsList,
@@ -218,13 +220,13 @@ public final class Recommendation {
         /* find the desired user from database */
         User desiredUser = usersData.findUserDataBase(action.getUsername());
 
+        Collections.reverse(genresLit);
         for (Genre genre : genresLit) {
             for (Show show : showsList) {
                 if (show.getGenres().contains(genre.getNameGenre())) {
                     /* if the user has not watched this video, which is
                      * the most popular, return the current video
                      */
-                    assert desiredUser != null;
                     if (!desiredUser.getHistory().containsKey(show.getTitle())) {
                         resultMessage = "PopularRecommendation result: " + show.getTitle();
                         return resultMessage;

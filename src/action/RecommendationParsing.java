@@ -13,7 +13,12 @@ import static action.Recommendation.popular;
 import static action.Recommendation.searchRecommend;
 import static action.Recommendation.standardRecommendation;
 
-public class RecommendationParsing {
+public final class RecommendationParsing {
+
+    /* default constructor */
+    private RecommendationParsing() {
+
+    }
     /**
      * The method that parses recommendation and calls the appropriate methods
      * @param usersData database class for users
@@ -22,45 +27,45 @@ public class RecommendationParsing {
      * @param action the action received as input
      * @return the resulting message
      */
-    public static String parse(final UsersDataBase usersData,
-                                             final ShowsDataBase showsData,
-                                             final MoviesDataBase moviesData,
-                                             final SerialsDataBase serialsData,
-                                             final GenresDataBase genresData,
-                                             final ActionInputData action) {
+    public static String parseRecommend(final UsersDataBase usersData,
+                                        final ShowsDataBase showsData,
+                                        final MoviesDataBase moviesData,
+                                        final SerialsDataBase serialsData,
+                                        final GenresDataBase genresData,
+                                        final ActionInputData action) {
 
         switch (action.getType()) {
-            case "standard" : {
+            case "standard" -> {
                 if (standardRecommendation(usersData, showsData, action) == null) {
                     return "StandardRecommendation cannot be applied!";
                 }
                 return standardRecommendation(usersData, showsData, action);
             }
-            case "best_unseen" : {
+            case "best_unseen" -> {
                 if (bestUnseenRecommendation(usersData, showsData, action) == null) {
                     return "BestRatedUnseenRecommendation cannot be applied!";
                 }
                 return bestUnseenRecommendation(usersData, showsData, action);
             }
-            case "popular" : {
+            case "popular" -> {
                 if (popular(usersData, showsData, genresData, action) == null) {
                     return "PopularRecommendation cannot be applied!";
                 }
                 return popular(usersData, showsData, genresData, action);
             }
-            case "favorite" :  {
+            case "favorite" ->  {
                 if (favoriteRecommendation(usersData, showsData, action) == null) {
                     return "FavoriteRecommendation cannot be applied!";
                 }
                 return favoriteRecommendation(usersData, showsData, action);
             }
-            case "search" : {
+            case "search" -> {
                 if (searchRecommend(usersData, showsData, action) == null) {
                     return "SearchRecommendation cannot be applied!";
                 }
                 return searchRecommend(usersData, showsData, action);
             }
-            default: {
+            default -> {
                 return null;
             }
         }

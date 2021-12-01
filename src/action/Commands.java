@@ -14,30 +14,11 @@ import java.util.Map;
 /**
  * The class that is used to implement commands
  */
-public final class Command {
+public final class Commands {
 
     /* default constructor */
-    private Command() {
+    private Commands() {
 
-    }
-    /**
-     * The method that parses commands and calls the appropriate methods
-     * @param usersData database class for users
-     * @param moviesData database class for movies
-     * @param serialsData database class for serials
-     * @param action the action received as input
-     * @return the resulting message
-     */
-    public static String parseCommand(final UsersDataBase usersData,
-                                            final MoviesDataBase moviesData,
-                                            final SerialsDataBase serialsData,
-                                            final ActionInputData action) {
-        return switch (action.getType()) {
-            case "favorite" -> favorite(usersData, action);
-            case "view" -> view(usersData, action);
-            case "rating" -> rating(usersData, moviesData, serialsData, action);
-            default -> null;
-        };
     }
 
     /**
@@ -46,8 +27,8 @@ public final class Command {
      * @param action the action received as input
      * @return the resulting message
      */
-    public static String favorite(final UsersDataBase usersData,
-                                  final ActionInputData action) {
+    public static String favoriteCommand(final UsersDataBase usersData,
+                                         final ActionInputData action) {
         /* get the data from the action */
         String desiredNameUser = action.getUsername();
         String showTitle = action.getTitle();
@@ -83,7 +64,7 @@ public final class Command {
      * @param action action
      * @return the resulting message
      */
-    public static String view(final UsersDataBase usersData, final ActionInputData action) {
+    public static String viewCommand(final UsersDataBase usersData, final ActionInputData action) {
         /* get  the necessary data for the current user */
         String desiredNameUser = action.getUsername();
         String showTitle = action.getTitle();
@@ -104,7 +85,8 @@ public final class Command {
             Integer numberViews = userHistory.get(showTitle);
             numberViews++;
             userHistory.replace(showTitle, numberViews);
-            resultMessage = "success -> " +  showTitle + " was viewed with total views of " + numberViews;
+            resultMessage = "success -> " +  showTitle + ""
+                            + " was viewed with total views of " + numberViews;
         }
         return  resultMessage;
     }
@@ -117,8 +99,10 @@ public final class Command {
      * @param action the action received as input
      * @return the resulting message
      */
-    public static String rating(final UsersDataBase usersData, final MoviesDataBase moviesData,
-                                final SerialsDataBase serialsData, final ActionInputData action) {
+    public static String ratingCommand(final UsersDataBase usersData,
+                                       final MoviesDataBase moviesData,
+                                       final SerialsDataBase serialsData,
+                                       final ActionInputData action) {
 
         /* get  the necessary data for the current user */
         String desiredNameUser = action.getUsername();
@@ -143,8 +127,8 @@ public final class Command {
             if (!desiredMovie.getRatingByUser().containsKey(currentUser)) {
                 desiredMovie.getRatingByUser().put(currentUser, action.getGrade());
                 currentUser.incrementGivenRatingNumber();
-                resultMessage = "success -> " + showTitle + " was rated with " +
-                                 action.getGrade() + " by " + currentUser.getUsername();
+                resultMessage = "success -> " + showTitle + " was rated with "
+                                + action.getGrade() + " by " + currentUser.getUsername();
                 return resultMessage;
             }
         }
@@ -164,8 +148,8 @@ public final class Command {
                 desiredSeason.getRatings().add(action.getGrade());
                 currentUser.incrementGivenRatingNumber();
                 /* return result message */
-                resultMessage = "success -> " + showTitle + " was rated with " +
-                        action.getGrade() +  " by " + currentUser.getUsername();
+                resultMessage = "success -> " + showTitle + " was rated with "
+                                + action.getGrade() +  " by " + currentUser.getUsername();
                 return resultMessage;
             }
         }

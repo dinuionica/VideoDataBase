@@ -14,12 +14,13 @@ import user.User;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * The class used to create the database
  */
-public final class CreateDataBase {
+public final class CreateData {
     /* default constructor */
-    private CreateDataBase() {
+    private CreateData() {
 
     }
 
@@ -136,25 +137,8 @@ public final class CreateDataBase {
      */
     public static GenresDataBase createGenresList() {
         /* Enum that contains all kinds of videos in the database */
-        enum EnumGenreDataBase {
-            TV_MOVIE("TV Movie"), DRAMA("Drama"), FANTASY("Fantasy"),
-            COMEDY("Comedy"), FAMILY("Family"), WAR("War"),
-            SCI_FI_FANTASY("Sci-Fi & Fantasy"), CRIME("Crime"),
-            ANIMATION("Animation"), SCIENCE_FICTION("Science Fiction"),
-            ACTION("Action"), HORROR("Horror"), MYSTERY("Mystery"),
-            WESTERN("Western"), ADVENTURE("Adventure"),
-            ACTION_ADVENTURE("Action & Adventure"), ROMANCE("Romance"),
-            THRILLER("Thriller"), KIDS("Kids"), HISTORY("History");
 
-            private final String content;
-            /* setters and getters for enum */
-            EnumGenreDataBase(String d) {
-                this.content = d;
-            }
-            public String getContent() {
-                return content;
-            }
-        }
+
         ArrayList<Genre> genresList = new ArrayList<>();
 
         /* For each type of genre, create a new object, update

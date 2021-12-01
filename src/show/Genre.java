@@ -11,45 +11,60 @@ public class Genre {
     /**
      * Gender type with popularity factor
      */
-    HashMap<String, Integer> genres = new HashMap<>();
+    private HashMap<String, Integer> genres = new HashMap<>();
 
     /**
      * Popularity factor
      */
-    int popularityFactor;
+    private int popularityFactor;
 
     /**
      * Name of a genre
      */
-    String nameGenre;
+    private String nameGenre;
 
     /* constructor */
     public Genre() {
         this.genres = new HashMap<>();
     }
 
-    /* getters and setters */
+    /**
+     * The method that returns the name of genre
+     * @return the desired name
+     */
     public String getNameGenre() {
         return nameGenre;
     }
 
+    /**
+     * The method that return the hashmap of genres
+     * @return the desired hashmap
+     */
     public HashMap<String, Integer> getGenres() {
         return genres;
     }
 
-    public void setGenres(HashMap<String, Integer> genres) {
+    /**
+     * The method that sets the hashmap of genres
+     * @param genres input genres
+     */
+    public void setGenres(final HashMap<String, Integer> genres) {
         this.genres = genres;
     }
 
+    /**
+     * The method returns the popularity factor of an actor
+     * @return the factor
+     */
     public int getPopularityFactor() {
         return popularityFactor;
     }
 
     /**
      * The method tha update the information about a genre
-     * @param name
+     * @param name the name of genre
      */
-    public void updateInformation(String name) {
+    public void updateInformation(final String name) {
         this.genres.put(name, 0);
         this.nameGenre = name;
         this.popularityFactor = 0;
@@ -57,9 +72,9 @@ public class Genre {
 
     /**
      * The method that calculates the popularity factor of a genre
-     * @param showsData
+     * @param showsData database class of shows
      */
-    public void calculatePopularityFactor(ShowsDataBase showsData) {
+    public void calculatePopularityFactor(final ShowsDataBase showsData) {
         for (Show show : showsData.getShowsList()) {
             int numberViews = show.getNumberViews();
             for (String genre : show.getGenres()) {

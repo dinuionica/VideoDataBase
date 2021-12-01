@@ -1,13 +1,13 @@
 package main;
 
-import action.Command;
+import action.CommandsParsing;
+import action.QueryParsing;
 import action.RecommendationParsing;
-import action.Query;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
 import database.ActorsDataBase;
-import database.CreateDataBase;
+import database.CreateData;
 import database.GenresDataBase;
 import database.MoviesDataBase;
 import database.SerialsDataBase;
@@ -26,9 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-/**
- * The entry point to this homework. It runs the checker that tests your implementation.
- */
+
 public final class Main {
     /**
      * for coding style
@@ -87,31 +85,31 @@ public final class Main {
         JSONObject object;
 
         /* Creating classes with database-specific lists */
-        UsersDataBase usersData = CreateDataBase.createUsersList(input);
-        ShowsDataBase showsData = CreateDataBase.createShowsList(input);
-        SerialsDataBase serialsData = CreateDataBase.createSerialsList(input);
-        MoviesDataBase moviesData = CreateDataBase.createMoviesList(input);
-        ActorsDataBase actorsData = CreateDataBase.createActorsList(input);
-        GenresDataBase genresData = CreateDataBase.createGenresList();
+        UsersDataBase usersData = CreateData.createUsersList(input);
+        SerialsDataBase serialsData = CreateData.createSerialsList(input);
+        MoviesDataBase moviesData = CreateData.createMoviesList(input);
+        ShowsDataBase showsData = CreateData.createShowsList(input);
+        ActorsDataBase actorsData = CreateData.createActorsList(input);
+        GenresDataBase genresData = CreateData.createGenresList();
 
         /* parsing commands according to its type */
         for (ActionInputData action : input.getCommands()) {
             switch (action.getActionType()) {
                 case "command" -> {
-                    resultMessage = Command.parseCommand(usersData, moviesData,
-                                    serialsData, action);
+                    resultMessage = CommandsParsing.parse(usersData, moviesData,
+                            serialsData, action);
                     object = fileWriter.writeFile(action.getActionId(), null, resultMessage);
                     arrayResult.add(object);
                 }
                 case "query" -> {
-                    resultMessage = Query.parseQuery(usersData, showsData,
-                                    moviesData, serialsData, actorsData, action);
+                    resultMessage = QueryParsing.parse(usersData, showsData,
+                            moviesData, serialsData, actorsData, action);
                     object = fileWriter.writeFile(action.getActionId(), null, resultMessage);
                     arrayResult.add(object);
                 }
                 case "recommendation" -> {
-                    resultMessage = RecommendationParsing.parse(usersData, showsData,
-                                    moviesData, serialsData, genresData, action);
+                    resultMessage = RecommendationParsing.parseRecommend(usersData, showsData,
+                            moviesData, serialsData, genresData, action);
                     object = fileWriter.writeFile(action.getActionId(), null, resultMessage);
                     arrayResult.add(object);
                 }
