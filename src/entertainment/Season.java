@@ -1,16 +1,12 @@
 package entertainment;
 
 import user.User;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 /**
  * Information about a season of a tv show
- * <p>
- * DO NOT MODIFY
  */
 public final class Season {
     /**
@@ -26,7 +22,7 @@ public final class Season {
      */
     private List<Double> ratings;
 
-    private Map<User, Double> ratingsByUser;
+    private final HashMap<User, Double> ratingsByUser;
 
     public Season(final int currentSeason, final int duration) {
         this.currentSeason = currentSeason;
@@ -55,15 +51,20 @@ public final class Season {
         this.ratings = ratings;
     }
 
+    /**
+     * The method that calculates the average rating of a season
+     * @return the rating
+     */
     public double getRatingSeason() {
         double sumRatings = 0;
+        /* adding each rating from the list to the current amount */
         for (double rating : this.ratings) {
             sumRatings += rating;
         }
         if (this.ratings.size() != 0) {
-            return (double)(sumRatings / this.ratings.size());
+            return (sumRatings / this.ratings.size());
         }
-        return (double) 0;
+        return 0;
     }
 
     @Override
@@ -76,4 +77,3 @@ public final class Season {
                 + '}';
     }
 }
-
