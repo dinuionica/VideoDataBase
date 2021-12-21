@@ -1,11 +1,7 @@
 
 
-Nume: Ion-Irinel Dinu
-Seria: CA 
-Grupa: 325CA
 
-
-        TEMA 1 Programare Orientata pe Obiect -> Video DataBase
+# Video DataBase 
 ------------------------------------------------------------------------------- 
 
 Link repo git : https://github.com/dinuionica/VideoDB
