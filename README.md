@@ -5,61 +5,61 @@
 ------------------------------------------------------------------------------- 
 
 Link repo git : https://github.com/dinuionica/VideoDB
-CONTINUT ARHIVA
-
-src/ -> folder-ul ce contine sursele implementate
-README -> fisierul ce contine detalii despre structura si implementare
-.git -> fisierul care prezinta detalii despre versionarea git
 
 
--------------------------------------------------------------------------------
-STRUCTURA CLASELOR SI RELATIILE SPECIFICE
+## ARCHIVE CONTENT
 
-Pentru rezolvarea temei, am implementat o serie de clase si pachete :
+src / -> the folder containing the implemented sources
+README -> the file containing details about the structure and implementation
+.git -> the file that details git versioning
 
-show -> Show -> clasa abstract specifica unui Video
-             -> implementeaza metode abstracte precum getDuration care se
-                aplica atat pe clase de tip Movie cat si pe clase Serial
 
-     -> Movie -> clasa care mosteneste clasa Show, specifica unui film
-     -> Serial -> clasa care mosteneste clasa Show, specifica unui Serial
-     -> Genre -> clasa specifica unui anumit tip de gen al unui video 
+-------------------------------------------------- ----------------------------
+## CLASS STRUCTURE AND SPECIFIC RELATIONS
 
-user -> User -> clasa specifica unui utilizator
+To solve the topic, we implemented a series of classes and packages:
 
-actor -> Actor -> clasa specifica unui actor
-               -> pe baza acestei clase se realizeaza queries pentru actori
+show -> Show -> abstract class specific to a Video
+             -> implements abstract methods such as getDuration which
+                applies to both Movie and Serial classes
+
+     -> Movie -> class that inherits the Show class, specific to a movie
+     -> Serial -> class that inherits the Show class, specific to a Serial
+     -> Genres -> class specific to a particular genre type of a video
+
+user -> User -> class specific to a user
+
+actor -> Actor -> class specific to an actor
+               -> based on this class, queries are made for actors
 
     
-database -> UserDataBase - > clasa contine o lista cu obiecte de tip User 
-         -> ShowsDataBase -> clasa contine o lista cu obiecte de tip Shows
-         -> SerialsDataBase -> clasa contine o lista cu obiecte de tip Serial
-         -> MoviesDataBase -> clasa contine o lista cu obiecte de tip Movie
-         -> ActorsDataBase -> clasa contine o lista cu obiecte de tip Actor
-         -> GenresDataBase -> clasa contine o lista cu obiecte de tip Genre
-         -> CreateDataBase -> clasa in cadrul careia se creaza clase mai sus
-            mentionate, cu listele specifice fiecaruia
+database -> UserDataBase -> class contains a list of User objects
+         -> ShowsDataBase -> class contains a list of Shows objects
+         -> SerialsDataBase -> class contains a list of Serial objects
+         -> MoviesDataBase -> the class contains a list of Movie objects
+         -> ActorsDataBase -> class contains a list of Actor objects
+         -> GenresDataBase -> the class contains a list of Genre objects
+         -> CreateDataBase -> the class in which the above classes are created
+            mentioned, with the lists specific to each
 
-action -> CommandsParsing -> clasa care se ocupa de interpretarea fiecarei 
-          comenzi si care apeleaza metodele corespunzatoare
+action -> CommandsParsing -> the class that deals with the interpretation of each
+          commands and calling the appropriate methods
 
-       -> QueryParsing -> clasa care se ocupa de interpretarea fiecarei
-          query type si care apeleaza metodele corespunzatoare
+       -> QueryParsing -> the class that deals with the interpretation of each
+          query type and calling the appropriate methods
        
-       -> RecommendationParsing -> clasa care se ocupa de interpretarea 
-         fiecarei recomandari si care apeleaza metodele corespunzatoare
+       -> RecommendationParsing -> interpretation class
+         each recommendation and which uses the appropriate methods
 
-       -> Commands -> clasa care contine cele trei metode (favoriteCommand,
-        viewCommand, ratingCommand) care aplica comenzile specifice
+       -> Commands -> the class that contains the three methods (favoriteCommand,
+        viewCommand, ratingCommand) which applies specific commands
 
-       -> Query -> clasa care contine metodele de tip query(awardsQuery,
-       serialsFavoriteQuery etc), care aplica tip de query specific
+       -> Query -> class containing query methods (awardsQuery,
+       serialsFavoriteQuery etc), which applies specific query type
 
-       -> Recommendation -> clasa care contine metodele de tip recommendation
-       (standardRecommendation, favoriteRecommendation etc) care aplica tipul
-       de recomndare specifica
-
-
+       -> Recommendation -> the class that contains the recommendation methods
+       (standardRecommendation, favoriteRecommendation etc) that applies the type
+       specific recommendation
 -------------------------------------------------------------------------------
 LOGICA 
 
