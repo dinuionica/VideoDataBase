@@ -4,16 +4,6 @@
 # Video DataBase 
 ------------------------------------------------------------------------------- 
 
-
-
-## ARCHIVE CONTENT
-
-src / -> the folder containing the implemented sources <br>
-README -> the file containing details about the structure and implementation  <br>
-.git -> the file that details git versioning <br>
-
-
--------------------------------------------------- ----------------------------
 ## CLASS STRUCTURE AND SPECIFIC RELATIONS
 
 To solve the topic, we implemented a series of classes and packages:
