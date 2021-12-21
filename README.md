@@ -4,14 +4,13 @@
 # Video DataBase 
 ------------------------------------------------------------------------------- 
 
-Link repo git : https://github.com/dinuionica/VideoDB
 
 
 ## ARCHIVE CONTENT
 
-src / -> the folder containing the implemented sources
-README -> the file containing details about the structure and implementation
-.git -> the file that details git versioning
+src / -> the folder containing the implemented sources <br>
+README -> the file containing details about the structure and implementation  <br>
+.git -> the file that details git versioning <br>
 
 
 -------------------------------------------------- ----------------------------
