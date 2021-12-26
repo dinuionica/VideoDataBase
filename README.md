@@ -15,7 +15,7 @@ results, after executing an action, are loaded into the resulting JSON file.
 ------------------------------------------------------------------------------- 
 
 ## Class Structure And Specific Relations
-
+`
 To solve the topic, a series of classes and packages have been implemented: <br>
 show -> Show   -> abstract class specific to a Video <br>
                -> implements abstract methods such as getDuration which <br>
@@ -28,7 +28,7 @@ user -> User   -> class specific to a user <br>
 
 actor -> Actor -> class specific to an actor <br>
                -> based on this class, queries are made for actors <br>
-
+`
     
 database -> UserDataBase -> class contains a list of User objects <br>
          -> ShowsDataBase -> class contains a list of Shows objects <br>
