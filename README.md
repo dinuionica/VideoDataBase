@@ -5,8 +5,8 @@
 ------------------------------------------------------------------------------- 
 
 This project simulates a simplified platform that provides information about movies and series.
-Users can receive personalized recommendations based on their preferences.Specific operations:
-commands, queries and recommendations.
+The platform performs actions that users can take on a movie viewing platform: ratings, movie
+viewing, searches, recommendations. Users can receive personalized recommendations based on their preferences
 
 ------------------------------------------------------------------------------- 
 
