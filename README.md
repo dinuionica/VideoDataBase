@@ -7,11 +7,11 @@
 This project simulates a simplified platform that provides information about movies and serials.
 The platform performs actions that users can take on a movie viewing platform: ratings, movie
 viewing, searches, recommendations. Users can receive personalized recommendations based on their preferences.
-The project was made in the Java language, using Object Oriented Programming.
+The project was made in the Java language, using the concepts of Object Oriented Programming.
 
 ------------------------------------------------------------------------------- 
 
-## CLASS STRUCTURE AND SPECIFIC RELATIONS
+## Class Structure And Specific Relations
 
 To solve the topic, we implemented a series of classes and packages:
 
