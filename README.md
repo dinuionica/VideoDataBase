@@ -3,8 +3,10 @@
 
 # Video DataBase 
 ------------------------------------------------------------------------------- 
+
 This project is a simplified platform that provides information about movies and series.
 Users can receive personalized recommendations based on their preferences.
+
 ------------------------------------------------------------------------------- 
 
 ## CLASS STRUCTURE AND SPECIFIC RELATIONS
