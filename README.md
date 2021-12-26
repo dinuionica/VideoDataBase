@@ -17,20 +17,20 @@ results, after executing an action, are loaded into the resulting JSON file.
 ## Class Structure And Specific Relations
 
 To solve the topic, a series of classes and packages have been implemented: <br>
-## SHOW <br>
+* SHOW <br>
      * Show   -> abstract class specific to a Video implements abstract methods <br>
      * Movie  -> class that inherits the Show class, specific to a movie <br>
      * Serial -> class that inherits the Show class, specific to a Serial <br>
      * Genres -> class specific to a particular genre type of a video <br>
 
-* user <br>
+* USER <br>
      * User   -> class specific to a user <br>
 
-* actor <br>
+* ACTOR <br>
      * Actor -> class specific to an actor, based on this class, queries are made for actors <br>
 
     
-* database  <br>
+* DATABASE  <br>
      * UserDataBase -> class contains a list of User objects <br>
      * ShowsDataBase -> class contains a list of Shows objects <br>
      * SerialsDataBase -> class contains a list of Serial objects <br>
@@ -40,24 +40,25 @@ To solve the topic, a series of classes and packages have been implemented: <br>
      * CreateDataBase -> the class in which the above classes are created <br>
         mentioned, with the lists specific to each <br>
 
-action -> CommandsParsing -> the class that deals with the interpretation of each
+* ACTION 
+    -> CommandsParsing -> the class that deals with the interpretation of each
           commands and calling the appropriate methods
 
-       -> QueryParsing -> the class that deals with the interpretation of each
-          query type and calling the appropriate methods
-       
-       -> RecommendationParsing -> interpretation class
-         each recommendation and which uses the appropriate methods
+   -> QueryParsing -> the class that deals with the interpretation of each
+      query type and calling the appropriate methods
 
-       -> Commands -> the class that contains the three methods (favoriteCommand,
-        viewCommand, ratingCommand) which applies specific commands
+   -> RecommendationParsing -> interpretation class
+     each recommendation and which uses the appropriate methods
 
-       -> Query -> class containing query methods (awardsQuery,
-       serialsFavoriteQuery etc), which applies specific query type
+   -> Commands -> the class that contains the three methods (favoriteCommand,
+    viewCommand, ratingCommand) which applies specific commands
 
-       -> Recommendation -> the class that contains the recommendation methods
-       (standardRecommendation, favoriteRecommendation etc) that applies the type
-       specific recommendation
+   -> Query -> class containing query methods (awardsQuery,
+   serialsFavoriteQuery etc), which applies specific query type
+
+   -> Recommendation -> the class that contains the recommendation methods
+   (standardRecommendation, favoriteRecommendation etc) that applies the type
+   specific recommendation
 -------------------------------------------------------------------------------
 LOGICA 
 
