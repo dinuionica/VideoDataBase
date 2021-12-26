@@ -34,10 +34,10 @@ To solve the topic, a series of classes and packages have been implemented: <br>
      * UserDataBase -> class contains a list of User objects <br>
      * ShowsDataBase -> class contains a list of Shows objects <br>
      * SerialsDataBase -> class contains a list of Serial objects <br>
-     * MoviesDataBase -> the class contains a list of Movie objects <br>
+     * MoviesDataBase -> class contains a list of Movie objects <br>
      * ActorsDataBase -> class contains a list of Actor objects <br>
-     * GenresDataBase -> the class contains a list of Genre objects <br> 
-     * CreateDataBase -> the class in which the above classes are created <br>
+     * GenresDataBase -> class contains a list of Genre objects <br> 
+     * CreateDataBase -> class in which the above classes are created <br>
         mentioned, with the lists specific to each <br>
 
 * ACTION 
