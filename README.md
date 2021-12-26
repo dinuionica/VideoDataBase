@@ -7,13 +7,16 @@
 This project simulates a simplified platform that provides information about movies and serials.
 The platform performs actions that users can take on a movie viewing platform: ratings, movie
 viewing, searches, recommendations. Users can receive personalized recommendations based on their preferences.
-The project was made in the Java language, using the concepts of Object Oriented Programming.
+The project was written in the Java language, using the concepts of Object Oriented Programming.
+The data read from the test file is loaded as input, in JSON format, into objects. Then it executes 
+sequential commands, queries or recommendations that have an effect on the repository. The final 
+results, after executing an action, are loaded into the resulting JSON file.
 
 ------------------------------------------------------------------------------- 
 
 ## Class Structure And Specific Relations
 
-To solve the topic, we implemented a series of classes and packages:
+To solve the topic, a series of classes and packages have been implemented:
 
 show -> Show -> abstract class specific to a Video
              -> implements abstract methods such as getDuration which
