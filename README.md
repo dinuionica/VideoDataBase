@@ -23,20 +23,22 @@ To solve the topic, a series of classes and packages have been implemented: <br>
      * Serial -> class that inherits the Show class, specific to a Serial <br>
      * Genres -> class specific to a particular genre type of a video <br>
 
-* user -> User   -> class specific to a user <br>
+* user <br>
+     * User   -> class specific to a user <br>
 
-* actor -> Actor -> class specific to an actor <br>
-               -> based on this class, queries are made for actors <br>
+* actor <br>
+     * Actor -> class specific to an actor, based on this class, queries are made for actors <br>
 
     
-database -> UserDataBase -> class contains a list of User objects <br>
-         -> ShowsDataBase -> class contains a list of Shows objects <br>
-         -> SerialsDataBase -> class contains a list of Serial objects <br>
-         -> MoviesDataBase -> the class contains a list of Movie objects <br>
-         -> ActorsDataBase -> class contains a list of Actor objects <br>
-         -> GenresDataBase -> the class contains a list of Genre objects <br> 
-         -> CreateDataBase -> the class in which the above classes are created <br>
-            mentioned, with the lists specific to each <br>
+* database  <br>
+     * UserDataBase -> class contains a list of User objects <br>
+     * ShowsDataBase -> class contains a list of Shows objects <br>
+     * SerialsDataBase -> class contains a list of Serial objects <br>
+     * MoviesDataBase -> the class contains a list of Movie objects <br>
+     * ActorsDataBase -> class contains a list of Actor objects <br>
+     * GenresDataBase -> the class contains a list of Genre objects <br> 
+     * CreateDataBase -> the class in which the above classes are created <br>
+        mentioned, with the lists specific to each <br>
 
 action -> CommandsParsing -> the class that deals with the interpretation of each
           commands and calling the appropriate methods
