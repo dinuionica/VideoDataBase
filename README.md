@@ -4,9 +4,10 @@
 # Video DataBase 
 ------------------------------------------------------------------------------- 
 
-This project simulates a simplified platform that provides information about movies and series.
+This project simulates a simplified platform that provides information about movies and serials.
 The platform performs actions that users can take on a movie viewing platform: ratings, movie
-viewing, searches, recommendations. Users can receive personalized recommendations based on their preferences
+viewing, searches, recommendations. Users can receive personalized recommendations based on their preferences.
+The project was made in the Java language, using Object Oriented Programming.
 
 ------------------------------------------------------------------------------- 
 
