@@ -4,8 +4,9 @@
 # Video DataBase 
 ------------------------------------------------------------------------------- 
 
-This project is a simplified platform that provides information about movies and series.
-Users can receive personalized recommendations based on their preferences.
+This project simulates a simplified platform that provides information about movies and series.
+Users can receive personalized recommendations based on their preferences. You can apply specific
+commands, queries and recommendations.
 
 ------------------------------------------------------------------------------- 
 
