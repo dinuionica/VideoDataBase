@@ -16,18 +16,18 @@ results, after executing an action, are loaded into the resulting JSON file.
 
 ## Class Structure And Specific Relations
 
-To solve the topic, a series of classes and packages have been implemented:
+To solve the topic, a series of classes and packages have been implemented: <br>
+```
+show -> Show   -> abstract class specific to a Video <br>
+              -> implements abstract methods such as getDuration which <br>
+                applies to both Movie and Serial classes <br>
+                
+     -> Movie  -> class that inherits the Show class, specific to a movie <br>
+     -> Serial -> class that inherits the Show class, specific to a Serial <br>
+     -> Genres -> class specific to a particular genre type of a video <br>
 
-show -> Show -> abstract class specific to a Video
-             -> implements abstract methods such as getDuration which
-                applies to both Movie and Serial classes
-
-     -> Movie -> class that inherits the Show class, specific to a movie
-     -> Serial -> class that inherits the Show class, specific to a Serial
-     -> Genres -> class specific to a particular genre type of a video
-
-user -> User -> class specific to a user
-
+user -> User -> class specific to a user <br>
+```
 actor -> Actor -> class specific to an actor
                -> based on this class, queries are made for actors
 
