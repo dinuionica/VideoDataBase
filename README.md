@@ -40,7 +40,7 @@ To solve the topic, a series of classes and packages have been implemented: <br>
      * CreateDataBase -> class in which the above classes are created <br>
         mentioned, with the lists specific to each <br>
 
-* ACTION 
+* ACTION <br>
     -> CommandsParsing -> the class that deals with the interpretation of each
           commands and calling the appropriate methods
 
