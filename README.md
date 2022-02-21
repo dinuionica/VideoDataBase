@@ -60,115 +60,113 @@ To solve the topic, a series of classes and packages have been implemented: <br>
    (standardRecommendation, favoriteRecommendation etc) that applies the type
    specific recommendation
 -------------------------------------------------------------------------------
-LOGICA 
+LOGIC
 
-In cadrul metodei main se creeaza clasele specifice pentru baza de date, 
-preluandu-se astfel input-ul programului. Pe baza tipului actiunii, se parseaza
-fiecare actiune si se apeleaza metoda din clasa corespunzatoare.
+The main method creates the specific classes for the database,
+thus taking over the input of the program. Based on the type of action, it is parsed
+each action and the method of the corresponding class is called.
 
-------------------------------------------------------------------------------- 
-COMMANDS : 
+-------------------------------------------------- ----------------------------
+COMMANDS:
 
-Se interpreaza tipul comenzii, si se apeleaza metoda specifica tipului.
-Fiecare metoda returneaza un string, care este rezultat ce va fi scris in 
-obiectul JSON rezultat,
+The order type is interpreted, and the type-specific method is called.
+Each method returns a string, which is the result of what will be written in
+the resulting JSON object,
 
-favoriteCommand -> verifica daca un utilizator a vizionat un video, daca il are
-deja prezent in lista de favorire, iar in caz negativ adauga filmul la lista
-de favorite a utilizatorului dorit.
+favoriteCommand -> check if a user has watched a video, if any
+already present in the favorites list, and if not add the movie to the list
+favorites of the desired user.
 
-viewCommand -> verifica daca un utilizator a vizionat un video, si actualizeaza
-numarul de vizualizari in functie de caz
+viewCommand -> check if a user has watched a video, and update
+the number of views depending on the case
 
-ratingCommand -> in mod similar se verifica daca video a fost vizualizat,
-iar apoi adauga rating unui video in functie de tipul acestuia(film sau serial)
-Daca utiliatorul a accordat deja un rating video-ului, se afiseaza un mesaj
-corespunzator.
--> Rating-ul acordat de un utilizator unui film, am ales sa il implementez
-sub forma de HashMap deoarece este unic, si este nevoie de valoarea acestuia.
+ratingCommand -> similarly check if the video has been viewed,
+and then add a rating to a video based on its type (movie or serial)
+If the user has already rated the video, a message is displayed
+suitable.
+-> The rating given by a user to a movie, I chose to implement it
+in the form of HashMap because it is unique, and its value is needed.
 
-------------------------------------------------------------------------------- 
-QUERY : 
+-------------------------------------------------- ----------------------------
+QUERY:
 
-In mod similar, se interpreteaza tipul comenzii pe baza actiunii transmise
-ca input. In cazul in care tipul obiectului transmis este de tip movies, se 
-apeleaza metodele specifice movies, iar in caz contrat se apeleaza metodele
-specifice serials.
-Fiecare metoda returneaza un string, care este rezultat ce va fi scris in 
-obiectul JSON rezultat,
+Similarly, the type of order is interpreted based on the transmitted action
+as input. If the transmitted object type is movies, it is
+calls movies specific methods, and in case of contract calls methods
+specific serials.
+Each method returns a string, which is the result of what will be written in
+the resulting JSON object,
 
+awargeQuery -> calculates for each actor the average rating of the video
+the lists in which he played, the lists are sorted, and finally added to the list
+of results the first actors in actors.
 
-awargeQuery -> se calculeaza pentru fiecare actor rating-ul mediua al video
--urilor in care a jucat, se sorteaza listele, si in final se adauga in lista 
-de rezultate actorii primii n actori.
+awardsQuery -> this method calculates the number of prizes for
+Each actor sorts the lists, and then adds them to the final list
+results actors who contain all the necessary awards.
 
-awardsQuery -> in cadrul acestei metode se calculeaza numarul de premii pentru
-fiecare actor, se sorteaza listele, si apoi se adauga in lista finala de
-rezultate actorii care contin toate premiile necesare.
+filterQuery -> this method sorts the list of actors by name,
+and all the actors in the description are added to the final list of strings
+the series of keywords transmitted as input through the action.
 
-filterQuery -> in cadrul acestei metode se sorteaza lista de actori dupa nume,
-si se adauga in lista finala de string-uri toti actorii care au in descriere
-seria de cuvinte cheie transmisa ca input prin intermediul actiunii.
+moviesRatingQuery -> sort movie list by average rating and name,
+and the first n movies are added to the final list that meets the filter criteria.
 
+moviesFavoriteQuery -> calculates the number of devices for each movie
+favorites, the list is sorted and the first results are added to the final list of results
+in movies that meet the filter criteria.
 
-moviesRatingQuery -> se sorteaza lista de filme dupa rating-ul mediu si nume,
-si se adauga primele n filme in lista finala care respecta criteriile de filtru.
+moviesLongestQuery -> sorts the movie list by length and name, and then
+the first in films that meet the criteria is added to the final list of results
+filter and having a viewing time other than 0
 
-moviesFavoriteQuery -> se calculeaza pentru fiecare film numarul de aparatii 
-favorite, se sorteaza lista si se adauga in lista finala de rezultate primele
-n filme care respecta criteriile de filtru.
+moviesMosViewQuert -> calculates the total number of movies for each movie
+views, sort movie lists, and finally add them to the playlist
+results first in movies that meet the criteria of filters and have the number
+all views other than 0
 
-moviesLongestQuery -> se sorteaza lista de filme dupa durata si nume, iar apoi
-se adauga in lista finala de rezultate primele n filme care respecta criteriile
-de filtru si care au durata de vizualizare diferita de 0
-
-moviesMosViewQuert -> se calculeaza pentru fiecare film numarul total de 
-vizualizari, se sorteaza liste de filme, iar la final se adauga in lista de
-rezultate primele n filme care respecta criteriile de filtre si au numarul
-totat de vizualizari diferit de 0
-
-In mod similar sunt implementate si metodele specifice serialelor, doar ca
-rationamentul se aplica pe un lista de seriale.
+Similarly, serial-specific methods are implemented, only
+the reasoning applies to a list of series.
 
 
-------------------------------------------------------------------------------- 
-RECOMMENDATION :
+-------------------------------------------------- ----------------------------
+RECOMMENDATION:
 
-Se interpreteaza tipul recomandarii si se apeleza metodele corespunzatoare.
-Fiecare metoda returneaza un string, care este rezultat ce va fi scris in 
-obiectul JSON rezultat,
+Interpret the type of recommendation and use the appropriate methods.
+Each method returns a string, which is the result of what will be written in
+the resulting JSON object,
 
-StandardRecommendation -> se parcurge lista de video-uri si se returneza
-primul video care nu se afla in istoricul de vizionari al utilizatorului
+StandardRecommendation -> scroll through the list of videos and return
+the first video not in the user's viewing history
 
-bestUnseenRecommendation -> se sorteaza lista de video-uri dupa rating-ul
-mediu si ordinea din baza de date, se inverseaza lista si se returneaza primul
-video nevizualizat
+bestUnseenRecommendation -> sort video list by rating
+average and order in the database, the list is reversed and returned first
+unseen video
 
-popularRecommendation -> se verifica tipul utilizatorului, apoi se pentru 
-fiecare gen factorul de popularitate. Apoi se sorteaza listele si se cauta in
-baza de date utilizatorul pe care se aplica recomndarea. In final se parcurge
-fiecare gen, apoi fiecare video si daca se gaseste un video din cel mai popular
-gen care nu a fost deja vizualizat de utilizator, se returneaza ca si 
-recomandare. 
--> pentru popularitate unui gen am ales sa implementez o clasa Genre, care
-contine un HashMap care contine fiecare gen si factorul de popularite al a
-acestuia. Pentru create listei de genuri din baza de date am implementat un 
-enum (EnumGenreDataBase) care contine toate tipurile de gen, iar in functia de
-creare a bazei de date am adaugat pe rand fiecare gen in lista de genuri.
+popularRecommendation -> check the user type, then for
+each genre the popularity factor. Then sort the lists and search in
+the user database to which the recommendation applies. In the end it goes through
+every genre, then every video and if one finds the most popular video
+genre that has not already been viewed by the user, is returned as
+recommendation.
+-> for the popularity of a genre I chose to implement a Genre class, which
+contains a HashMap that contains each genre and the popularity factor of a
+his. To create the genre list in the database we implemented a
+enum (EnumGenreDataBase) which contains all types of genres, and depending on
+creating the database I added each genre in the list of genres.
 
-favoriteRecommendation -> se verifica tipul utilizatorului, apoi pentru fiecare
-video se calculeaza numarul de aparitii in listele de favorite. Se cauta 
-utilizatorul pe care se aplica recomndarea, se sorteaza lista dupa numarul de
-aparitii, iar apoi se returneaza primul video care nu a fost vizualizat de 
-utilizator.
+favoriteRecommendation -> check the user type, then for each
+video calculates the number of appearances in the favorite lists. Looking for
+the user to whom the recommendation applies, sorts the list by the number of
+appearances, and then returns the first video that was not viewed by
+user.
 
-searchRecommendation -> in mod similar se verifica tipul utilizatorului si
-existenta acestuia in baza de date, se sorteaza lista de videouri dupa rating
-si nume, iar apoi se cauta primul video nevizualizat de utilizator care 
-se afla in genul dorit si se returneaza. Daca nu se poate realiza un astfel
-de tip de recomandare se intoarce un mesaj corespunzator.
+searchRecommendation -> similarly check user type and
+its existence in the database, the list of videos is sorted by rating
+and name, and then search for the first video not viewed by the user who
+it is in the desired genre and is returned. If such a thing cannot be done
+the appropriate type of message returns an appropriate message.
 
-Pentru realizarea sortarilor am folosit Collections.sort cu ajutorul caruia
-se poate implementa o sortare pe baza mai multor comparatori.
-In mod similar am realizat si inversarea listelor.
+To make the sorts I used Collections.sort with which
+sorting can be implemented based on several comparators.
+Similarly, I reversed the lists.
